@@ -88,5 +88,18 @@ That is, a string used to represent it on the tab bar."
                        (length (tabbar-view
                                 (tabbar-current-tabset)))))))))
 
+(defun tabbar-select-tab-by-number (n)
+  "select tab by number"
+  (interactive)
+  (let* ((tabset (tabbar-current-tabset t))
+         (tabset-value (symbol-value tabset))
+         (tab (nth n tabset-value)))
+    (if tab
+        (progn
+          (tabbar-select-tab tab tabset)
+          (tabbar-click-on-tab tab)
+          )))
+  )
+
     )
 )
